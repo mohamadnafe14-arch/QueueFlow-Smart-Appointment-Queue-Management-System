@@ -1,17 +1,27 @@
-# queue_flow
+# QueueFlow
 
-A new Flutter project.
+## Run locally
 
-## Getting Started
+Provide the Supabase base Project URL and Publishable Key using Dart defines.
+Use the project URL without `/rest/v1/`. For example:
 
-This project is a starting point for a Flutter application.
+```powershell
+flutter run --dart-define=SUPABASE_URL=https://hiekwcvtfsxitnstpwjn.supabase.co --dart-define=SUPABASE_PUBLISHABLE_KEY=sb_publishable_your-key
+```
 
-A few resources to get you started if this is your first Flutter project:
+## Build
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Pass the same defines to every build:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```powershell
+flutter build apk --release --dart-define=SUPABASE_URL=https://hiekwcvtfsxitnstpwjn.supabase.co --dart-define=SUPABASE_PUBLISHABLE_KEY=sb_publishable_your-key
+```
+
+The Project URL above is the confirmed base URL. Replace the example
+Publishable Key with the key supplied for local use. Startup fails with a safe
+configuration error if either value is missing or the URL is invalid.
+
+The Publishable Key is intended for client applications, but Dart defines are
+compiled into the app and are not a way to store secrets. Never provide a
+Supabase Secret or Service Role key. Supabase is used for Storage only; the
+application does not use Supabase Database.
