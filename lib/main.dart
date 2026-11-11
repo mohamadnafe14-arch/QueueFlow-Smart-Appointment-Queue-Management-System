@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:queue_flow/core/config/supabase_config.dart';
 import 'package:queue_flow/core/di/injection.dart';
+import 'package:queue_flow/core/router/app_router.dart';
 import 'package:queue_flow/core/theme/app_theme.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'firebase_options.dart';
+
+final _appRouter = createAppRouter(
+  home: const MyHomePage(title: 'Flutter Demo Home Page'),
+);
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +31,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
@@ -46,7 +51,7 @@ class MyApp extends StatelessWidget {
       //
       // This works for code too, not just values: Most code changes can be
       // tested with just a hot reload.
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routerConfig: _appRouter,
     );
   }
 }
