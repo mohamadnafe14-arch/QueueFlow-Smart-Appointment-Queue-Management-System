@@ -2,26 +2,19 @@
 
 ## Run locally
 
-Provide the Supabase base Project URL and Publishable Key using Dart defines.
-Use the project URL without `/rest/v1/`. For example:
+Supabase configuration is read from the ignored local file
+`lib/core/secret/supabase_secrets.dart`. Keep its URL set to the base Project
+URL (without `/rest/v1/`) and use only a Publishable Key. Never place a Secret
+or Service Role key in the Flutter app.
 
 ```powershell
-flutter run --dart-define=SUPABASE_URL=https://hiekwcvtfsxitnstpwjn.supabase.co --dart-define=SUPABASE_PUBLISHABLE_KEY=sb_publishable_your-key
+flutter run
 ```
 
 ## Build
 
-Pass the same defines to every build:
-
 ```powershell
-flutter build apk --release --dart-define=SUPABASE_URL=https://hiekwcvtfsxitnstpwjn.supabase.co --dart-define=SUPABASE_PUBLISHABLE_KEY=sb_publishable_your-key
+flutter build apk --release
 ```
 
-The Project URL above is the confirmed base URL. Replace the example
-Publishable Key with the key supplied for local use. Startup fails with a safe
-configuration error if either value is missing or the URL is invalid.
-
-The Publishable Key is intended for client applications, but Dart defines are
-compiled into the app and are not a way to store secrets. Never provide a
-Supabase Secret or Service Role key. Supabase is used for Storage only; the
-application does not use Supabase Database.
+Supabase uses Storage only; the application does not use Supabase Database.

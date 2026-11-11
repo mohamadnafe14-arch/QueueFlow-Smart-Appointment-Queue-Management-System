@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:queue_flow/core/config/supabase_config.dart';
-import 'package:queue_flow/core/secret/supabase_secrets.dart';
+import 'package:queue_flow/core/di/injection.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'firebase_options.dart';
@@ -12,9 +12,10 @@ Future<void> main() async {
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Supabase.initialize(
-    url: SupabaseSecrets.supabaseUrl,
-    publishableKey: SupabaseSecrets.publishableKey,
+    url: SupabaseConfig.projectUrl,
+    publishableKey: SupabaseConfig.publishableKey,
   );
+  await configureDependencies();
   runApp(const MyApp());
 }
 

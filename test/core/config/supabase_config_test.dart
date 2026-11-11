@@ -1,11 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:queue_flow/core/config/supabase_config.dart';
-import 'package:queue_flow/core/secret/supabase_secrets.dart';
 
 void main() {
   group('SupabaseConfig.validate', () {
-    const publishableKey = SupabaseSecrets.publishableKey;
-    const projectUrl = SupabaseSecrets.supabaseUrl;
+    const publishableKey = 'sb_publishable_test-key';
+    const projectUrl = 'https://project.supabase.co';
 
     test('accepts a valid base project URL', () {
       SupabaseConfig.validate(

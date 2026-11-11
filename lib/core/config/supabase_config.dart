@@ -1,8 +1,8 @@
+import 'package:queue_flow/core/secret/supabase_secrets.dart';
+
 class SupabaseConfig {
-  static const projectUrl = String.fromEnvironment('SUPABASE_URL');
-  static const publishableKey = String.fromEnvironment(
-    'SUPABASE_PUBLISHABLE_KEY',
-  );
+  static const projectUrl = SupabaseSecrets.supabaseUrl;
+  static const publishableKey = SupabaseSecrets.publishableKey;
 
   static void validate({String? projectUrl, String? publishableKey}) {
     final url = projectUrl ?? SupabaseConfig.projectUrl;
@@ -11,7 +11,7 @@ class SupabaseConfig {
     if (url.isEmpty || key.trim().isEmpty) {
       throw StateError(
         'Missing Supabase configuration. Provide SUPABASE_URL and '
-        'SUPABASE_PUBLISHABLE_KEY using --dart-define.',
+        'SUPABASE_PUBLISHABLE_KEY in the local secrets file.',
       );
     }
 
