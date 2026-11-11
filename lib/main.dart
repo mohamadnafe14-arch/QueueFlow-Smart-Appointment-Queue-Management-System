@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:queue_flow/core/secret/supabase_secrets.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async {
+await Supabase.initialize(
+  url: SupabaseSecrets.supabaseUrl,
+  publishableKey: SupabaseSecrets.publishableKey,
+);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 

@@ -46,3 +46,8 @@ app.*.map.json
 
 # Widget Preview related
 .widget_preview/
+# Firebase related
+android/app/google-services.json
+firebase.json
+#Supabase related
+lib/core/secret/supabase_secrets.dart
