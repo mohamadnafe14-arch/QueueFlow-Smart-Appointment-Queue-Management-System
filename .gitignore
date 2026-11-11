@@ -51,3 +51,7 @@ android/app/google-services.json
 firebase.json
 #Supabase related
 lib/core/secret/supabase_secrets.dart
+#UI related
+stitch_queueflow_multi_platform_design_system
+#Guidelines related
+project-guidelines.md
